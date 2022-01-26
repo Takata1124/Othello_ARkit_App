@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		68E13B5227A161CE00BC289E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B5127A161CE00BC289E /* AppDelegate.swift */; };
+		68E13B5427A161CE00BC289E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 68E13B5327A161CE00BC289E /* art.scnassets */; };
+		68E13B5627A161CE00BC289E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B5527A161CE00BC289E /* ViewController.swift */; };
+		68E13B5927A161CE00BC289E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E13B5727A161CE00BC289E /* Main.storyboard */; };
+		68E13B5B27A161D000BC289E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68E13B5A27A161D000BC289E /* Assets.xcassets */; };
+		68E13B5E27A161D000BC289E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E13B5C27A161D000BC289E /* LaunchScreen.storyboard */; };
+		68E13B6827A161D000BC289E /* Osero_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B6727A161D000BC289E /* Osero_AppTests.swift */; };
+		68E13B7227A161D000BC289E /* Osero_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B7127A161D000BC289E /* Osero_AppUITests.swift */; };
+		68E13B7427A161D000BC289E /* Osero_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B7327A161D000BC289E /* Osero_AppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		68E13B6427A161D000BC289E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68E13B4627A161CE00BC289E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68E13B4D27A161CE00BC289E;
+			remoteInfo = Osero_App;
+		};
+		68E13B6E27A161D000BC289E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68E13B4627A161CE00BC289E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68E13B4D27A161CE00BC289E;
+			remoteInfo = Osero_App;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		68E13B4E27A161CE00BC289E /* Osero_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Osero_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68E13B5127A161CE00BC289E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		68E13B5327A161CE00BC289E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		68E13B5527A161CE00BC289E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		68E13B5827A161CE00BC289E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68E13B5A27A161D000BC289E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		68E13B5D27A161D000BC289E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		68E13B6327A161D000BC289E /* Osero_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Osero_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68E13B6727A161D000BC289E /* Osero_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Osero_AppTests.swift; sourceTree = "<group>"; };
+		68E13B6D27A161D000BC289E /* Osero_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Osero_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68E13B7127A161D000BC289E /* Osero_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Osero_AppUITests.swift; sourceTree = "<group>"; };
+		68E13B7327A161D000BC289E /* Osero_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Osero_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68E13B4B27A161CE00BC289E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68E13B6027A161D000BC289E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68E13B6A27A161D000BC289E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68E13B4527A161CE00BC289E = {
+			isa = PBXGroup;
+			children = (
+				68E13B5027A161CE00BC289E /* Osero_App */,
+				68E13B6627A161D000BC289E /* Osero_AppTests */,
+				68E13B7027A161D000BC289E /* Osero_AppUITests */,
+				68E13B4F27A161CE00BC289E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		68E13B4F27A161CE00BC289E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68E13B4E27A161CE00BC289E /* Osero_App.app */,
+				68E13B6327A161D000BC289E /* Osero_AppTests.xctest */,
+				68E13B6D27A161D000BC289E /* Osero_AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		68E13B5027A161CE00BC289E /* Osero_App */ = {
+			isa = PBXGroup;
+			children = (
+				68E13B5127A161CE00BC289E /* AppDelegate.swift */,
+				68E13B5327A161CE00BC289E /* art.scnassets */,
+				68E13B5527A161CE00BC289E /* ViewController.swift */,
+				68E13B5727A161CE00BC289E /* Main.storyboard */,
+				68E13B5A27A161D000BC289E /* Assets.xcassets */,
+				68E13B5C27A161D000BC289E /* LaunchScreen.storyboard */,
+			);
+			path = Osero_App;
+			sourceTree = "<group>";
+		};
+		68E13B6627A161D000BC289E /* Osero_AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				68E13B6727A161D000BC289E /* Osero_AppTests.swift */,
+			);
+			path = Osero_AppTests;
+			sourceTree = "<group>";
+		};
+		68E13B7027A161D000BC289E /* Osero_AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				68E13B7127A161D000BC289E /* Osero_AppUITests.swift */,
+				68E13B7327A161D000BC289E /* Osero_AppUITestsLaunchTests.swift */,
+			);
+			path = Osero_AppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		68E13B4D27A161CE00BC289E /* Osero_App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68E13B7727A161D000BC289E /* Build configuration list for PBXNativeTarget "Osero_App" */;
+			buildPhases = (
+				68E13B4A27A161CE00BC289E /* Sources */,
+				68E13B4B27A161CE00BC289E /* Frameworks */,
+				68E13B4C27A161CE00BC289E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Osero_App;
+			productName = Osero_App;
+			productReference = 68E13B4E27A161CE00BC289E /* Osero_App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		68E13B6227A161D000BC289E /* Osero_AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68E13B7A27A161D000BC289E /* Build configuration list for PBXNativeTarget "Osero_AppTests" */;
+			buildPhases = (
+				68E13B5F27A161D000BC289E /* Sources */,
+				68E13B6027A161D000BC289E /* Frameworks */,
+				68E13B6127A161D000BC289E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68E13B6527A161D000BC289E /* PBXTargetDependency */,
+			);
+			name = Osero_AppTests;
+			productName = Osero_AppTests;
+			productReference = 68E13B6327A161D000BC289E /* Osero_AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		68E13B6C27A161D000BC289E /* Osero_AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68E13B7D27A161D000BC289E /* Build configuration list for PBXNativeTarget "Osero_AppUITests" */;
+			buildPhases = (
+				68E13B6927A161D000BC289E /* Sources */,
+				68E13B6A27A161D000BC289E /* Frameworks */,
+				68E13B6B27A161D000BC289E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68E13B6F27A161D000BC289E /* PBXTargetDependency */,
+			);
+			name = Osero_AppUITests;
+			productName = Osero_AppUITests;
+			productReference = 68E13B6D27A161D000BC289E /* Osero_AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68E13B4627A161CE00BC289E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					68E13B4D27A161CE00BC289E = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					68E13B6227A161D000BC289E = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 68E13B4D27A161CE00BC289E;
+					};
+					68E13B6C27A161D000BC289E = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 68E13B4D27A161CE00BC289E;
+					};
+				};
+			};
+			buildConfigurationList = 68E13B4927A161CE00BC289E /* Build configuration list for PBXProject "Osero_App" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 68E13B4527A161CE00BC289E;
+			productRefGroup = 68E13B4F27A161CE00BC289E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68E13B4D27A161CE00BC289E /* Osero_App */,
+				68E13B6227A161D000BC289E /* Osero_AppTests */,
+				68E13B6C27A161D000BC289E /* Osero_AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68E13B4C27A161CE00BC289E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68E13B5427A161CE00BC289E /* art.scnassets in Resources */,
+				68E13B5E27A161D000BC289E /* LaunchScreen.storyboard in Resources */,
+				68E13B5B27A161D000BC289E /* Assets.xcassets in Resources */,
+				68E13B5927A161CE00BC289E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68E13B6127A161D000BC289E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68E13B6B27A161D000BC289E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		68E13B4A27A161CE00BC289E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68E13B5627A161CE00BC289E /* ViewController.swift in Sources */,
+				68E13B5227A161CE00BC289E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68E13B5F27A161D000BC289E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68E13B6827A161D000BC289E /* Osero_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68E13B6927A161D000BC289E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68E13B7227A161D000BC289E /* Osero_AppUITests.swift in Sources */,
+				68E13B7427A161D000BC289E /* Osero_AppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68E13B6527A161D000BC289E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68E13B4D27A161CE00BC289E /* Osero_App */;
+			targetProxy = 68E13B6427A161D000BC289E /* PBXContainerItemProxy */;
+		};
+		68E13B6F27A161D000BC289E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68E13B4D27A161CE00BC289E /* Osero_App */;
+			targetProxy = 68E13B6E27A161D000BC289E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		68E13B5727A161CE00BC289E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68E13B5827A161CE00BC289E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		68E13B5C27A161D000BC289E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68E13B5D27A161D000BC289E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		68E13B7527A161D000BC289E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		68E13B7627A161D000BC289E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		68E13B7827A161D000BC289E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2FZRK6M67D;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		68E13B7927A161D000BC289E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2FZRK6M67D;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		68E13B7B27A161D000BC289E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2FZRK6M67D;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Osero_App.app/Osero_App";
+			};
+			name = Debug;
+		};
+		68E13B7C27A161D000BC289E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2FZRK6M67D;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Osero_App.app/Osero_App";
+			};
+			name = Release;
+		};
+		68E13B7E27A161D000BC289E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2FZRK6M67D;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Osero_App;
+			};
+			name = Debug;
+		};
+		68E13B7F27A161D000BC289E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2FZRK6M67D;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Osero_App;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68E13B4927A161CE00BC289E /* Build configuration list for PBXProject "Osero_App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68E13B7527A161D000BC289E /* Debug */,
+				68E13B7627A161D000BC289E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68E13B7727A161D000BC289E /* Build configuration list for PBXNativeTarget "Osero_App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68E13B7827A161D000BC289E /* Debug */,
+				68E13B7927A161D000BC289E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68E13B7A27A161D000BC289E /* Build configuration list for PBXNativeTarget "Osero_AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68E13B7B27A161D000BC289E /* Debug */,
+				68E13B7C27A161D000BC289E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68E13B7D27A161D000BC289E /* Build configuration list for PBXNativeTarget "Osero_AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68E13B7E27A161D000BC289E /* Debug */,
+				68E13B7F27A161D000BC289E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 68E13B4627A161CE00BC289E /* Project object */;
+}
