@@ -8,10 +8,51 @@
 import UIKit
 import SceneKit
 import ARKit
+import SnapKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-
+    
     @IBOutlet var sceneView: ARSCNView!
+    
+    private let uiButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .lightGray
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 1
+        button.setTitle("Setup", for: .normal)
+        button.titleLabel?.tintColor = .black
+        return button
+    }()
+    
+    private let othelloButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .lightGray
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 1
+        button.setTitle("othello", for: .normal)
+        button.titleLabel?.tintColor = .black
+        return button
+    }()
+    
+    let tagetPlane: SCNPlane = {
+        let plane = SCNPlane(width: 0.02, height: 0.02)
+        plane.cornerRadius = 1
+        plane.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(0.8)
+        return plane
+    }()
+    
+    var targetNode: SCNNode?
+    var currentPos = float3(0, 0, 0)
+    
+    var screenCenter: CGPoint {
+        let bounds = sceneView.bounds
+        return CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+    
+    let boardscene = SCNScene(named: "art.scnassets/board.scn")
+    var boardNode = SCNNode()
+    
+    let othelloScene = SCNScene(named: "art.scnassets/othello.scn")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,56 +60,122 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        sceneView.autoenablesDefaultLighting = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene()
         
         // Set the scene to the view
         sceneView.scene = scene
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         
-        // Create a session configuration
+        setupLayout()
+        
         let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
+        configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    private func setupLayout() {
         
-        // Pause the view's session
-        sceneView.session.pause()
+        sceneView.addSubview(uiButton)
+        sceneView.addSubview(othelloButton)
+        
+        uiButton.addTarget(self, action: #selector(self.tapButton(_ :)), for: .touchUpInside)
+        uiButton.snp.makeConstraints { make in
+            
+            make.size.equalTo(100)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(sceneView.snp.bottom).offset(-100)
+        }
+        
+        othelloButton.snp.makeConstraints { make in
+            
+            make.size.equalTo(100)
+            make.right.equalTo(uiButton.snp.left).offset(-30)
+            make.bottom.equalTo(sceneView.snp.bottom).offset(-100)
+        }
+        
+        boardNode = (self.boardscene?.rootNode.childNode(withName: "board", recursively: false))!
+        boardNode.name = "board"
+        
+        targetNode = SCNNode(geometry: tagetPlane)
+        targetNode?.name = "target"
+        targetNode?.isHidden = true
+        targetNode?.eulerAngles.x = -Float.pi / 4
+        
+        sceneView.scene.rootNode.addChildNode(targetNode!)
+    }
+    
+    @objc func tapButton(_ sender: UIButton){
+            
+        boardNode = (boardscene?.rootNode.childNode(withName: "board", recursively: false))!
+        boardNode.position = SCNVector3(self.currentPos.x, self.currentPos.y, self.currentPos.z)
+        boardNode.eulerAngles.y = -Float.pi / 2
+        
+        sceneView.scene.rootNode.addChildNode(boardNode)
     }
 
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
+    private func addTable(hitResult: ARHitTestResult) {
+
+        let (min, max) = (boardNode.boundingBox)
+        let w = CGFloat(max.x - min.x)
+        //        let magnification = 0.1 / w // 幅を1.5mにした場合の縮尺を計算
+        //        boardNode.scale = SCNVector3(magnification, magnification, magnification)
+//        boardNode.position = SCNVector3(hitResult.worldTransform.columns.3.x,
+//                                        hitResult.worldTransform.columns.3.y,
+//                                        hitResult.worldTransform.columns.3.z)
     }
-*/
     
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        guard let touch = touches.first else { return }
+        
+        let touchPos = touch.location(in: sceneView)
+        
+        let hitTestResult = sceneView.hitTest(touchPos, types: .existingPlaneUsingExtent)
+        
+        if !hitTestResult.isEmpty {
+            
+            if let hitResult = hitTestResult.first {
+                
+                addTable(hitResult: hitResult)
+            }
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
+        targetNode?.isHidden = false
+        
+        //        guard let planeAnchor = anchor as? ARPlaneAnchor else {fatalError()}
+        //        // ノード作成
+        //        let planeNode = SCNNode()
+        //        // ジオメトリの作成する
+        //        let geometry = SCNPlane(width: CGFloat(planeAnchor.extent.x),
+        //                                height: CGFloat(planeAnchor.extent.z))
+        //        geometry.materials.first?.diffuse.contents = UIColor.red.withAlphaComponent(0.8)
+        //
+        //        // ノードにGeometryとTransformを指定
+        //        planeNode.geometry = geometry
+        //        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1, 0, 0)
+        //
+        //        node.addChildNode(planeNode)
         
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+        DispatchQueue.main.async {
+            
+            let results = self.sceneView.hitTest(self.screenCenter, types: [.existingPlaneUsingGeometry])
+            
+            if let exisitingPlaneUsingGeometryResult = results.first(where: {$0.type == .existingPlaneUsingGeometry}) {
+                
+                let result = exisitingPlaneUsingGeometryResult
+                self.currentPos = float3(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
+                self.targetNode?.position = SCNVector3(self.currentPos.x, self.currentPos.y, self.currentPos.z)
+            }
+        }
     }
 }

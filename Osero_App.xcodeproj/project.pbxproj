@@ -16,6 +16,7 @@
 		68E13B6827A161D000BC289E /* Osero_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B6727A161D000BC289E /* Osero_AppTests.swift */; };
 		68E13B7227A161D000BC289E /* Osero_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B7127A161D000BC289E /* Osero_AppUITests.swift */; };
 		68E13B7427A161D000BC289E /* Osero_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B7327A161D000BC289E /* Osero_AppUITestsLaunchTests.swift */; };
+		68E13B8227A233FA00BC289E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 68E13B8127A233FA00BC289E /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E13B8227A233FA00BC289E /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +143,9 @@
 			dependencies = (
 			);
 			name = Osero_App;
+			packageProductDependencies = (
+				68E13B8127A233FA00BC289E /* SnapKit */,
+			);
 			productName = Osero_App;
 			productReference = 68E13B4E27A161CE00BC289E /* Osero_App.app */;
 			productType = "com.apple.product-type.application";
@@ -213,6 +218,9 @@
 				Base,
 			);
 			mainGroup = 68E13B4527A161CE00BC289E;
+			packageReferences = (
+				68E13B8027A233FA00BC289E /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 68E13B4F27A161CE00BC289E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -606,6 +614,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		68E13B8027A233FA00BC289E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		68E13B8127A233FA00BC289E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 68E13B8027A233FA00BC289E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 68E13B4627A161CE00BC289E /* Project object */;
 }
