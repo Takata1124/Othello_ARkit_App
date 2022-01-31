@@ -4,15 +4,12 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2022-01-27T16:16:17Z</created>
-  <modified>2022-01-27T16:16:17Z</modified>
+  <created>2022-01-31T15:16:17Z</created>
+  <modified>2022-01-31T15:16:17Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
  <library_materials>
-  <material id="material" name="material">
-   <instance_effect url="#effect_material"/>
-  </material>
   <material id="Material_001-material" name="Material_001">
    <instance_effect url="#effect_Material_001-material"/>
   </material>
@@ -21,38 +18,6 @@
   </material>
  </library_materials>
  <library_effects>
-  <effect id="effect_material">
-   <profile_COMMON>
-    <technique sid="common">
-     <phong>
-      <ambient>
-       <color>0.484529 0.484529 0.484529 1</color>
-      </ambient>
-      <diffuse>
-       <color>0.993735 0.993901 0.993713 1</color>
-      </diffuse>
-      <reflective>
-       <color>0 0 0 1</color>
-      </reflective>
-      <transparent opaque="A_ONE">
-       <color>1 1 1 1</color>
-      </transparent>
-      <transparency>
-       <float>1</float>
-      </transparency>
-      <index_of_refraction>
-       <float>1</float>
-      </index_of_refraction>
-     </phong>
-    </technique>
-   </profile_COMMON>
-   <extra>
-    <technique profile="SceneKit">
-     <litPerPixel>1</litPerPixel>
-     <ambient_diffuse_lock>1</ambient_diffuse_lock>
-    </technique>
-   </extra>
-  </effect>
   <effect id="effect_Material_001-material">
    <profile_COMMON>
     <technique sid="common">

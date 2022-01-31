@@ -55,33 +55,62 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     let availablePlane: SCNPlane = {
         
         let plane = SCNPlane(width: 0.015, height: 0.015)
-        plane.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(0.9)
+        plane.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(0.5)
+        return plane
+    }()
+    
+    let selectPlane: SCNPlane = {
+        
+        let plane = SCNPlane(width: 0.015, height: 0.015)
+        plane.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(1)
         return plane
     }()
     
     var targetNode: SCNNode?
+    var selectNode: SCNNode?
     var lineNode: SCNNode?
     var startPos = float3(0,0,0)
     var currentPos = float3(0, 0, 0)
     var boardPos = float3(Float(0), 0, 0)
+    var selectPos = float3(0, 0, 0)
+    var selectIndex: Int = 0
     var boardArray:[float3] = []
     var wboardArray:[[float3]] = []
-    let DIRECTIONS_YX = [[-1, -1], [+0, -1], [+1, -1],
-                         [-1, +0],           [+1, +0],
-                         [-1, +1], [+0, +1], [+1, +1]]
+    let derection_yx = [[-1, -1], [-1, +0], [-1, +1],
+                        [+0, -1],           [+0, +1],
+                        [+1, -1], [+1, +0], [+1, +1]]
     
-    var boardsitu: [[Int]] = [[9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+    var boardSituation: [[Int]] = [[9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
                               [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
                               [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
                               [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-                              [9, 0, 0, 0, 2, 1, 0, 0, 0, 9],
-                              [9, 0, 0, 0, 1, 2, 0, 0, 0, 9],
+                              [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+                              [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
                               [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
                               [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
                               [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
                               [9, 9, 9, 9, 9, 9, 9, 9, 9, 9]]
     
+    var proceedBoard: [[Int]] = [[0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0]]
+    
+    var rotationCountBoard: [[Int]] = [[1, 1, 1, 1, 1, 1, 1, 1],
+                                       [1, 1, 1, 1, 1, 1, 1, 1],
+                                       [1, 1, 1, 1, 1, 1, 1, 1],
+                                       [1, 1, 1, 1, 1, 1, 1, 1],
+                                       [1, 1, 1, 1, 1, 1, 1, 1],
+                                       [1, 1, 1, 1, 1, 1, 1, 1],
+                                       [1, 1, 1, 1, 1, 1, 1, 1],
+                                       [1, 1, 1, 1, 1, 1, 1, 1]]
+    
     var boardBoolArray: [[Bool]] = []
+    var availablePointArray: [[Int]] = []
     
     var screenCenter: CGPoint {
         let bounds = sceneView.bounds
@@ -90,8 +119,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     
     let boardscene = SCNScene(named: "art.scnassets/board.scn")
     var boardNode = SCNNode()
-    var sphereNode: SCNNode?
-
+    
+    let arrowScene = SCNScene(named: "art.scnassets/arrow.scn")
+    var arrowNode = SCNNode()
+    
+    var turnCount: Int = 0
+    var now_othelloType: Int?
+    var straighArray: [[Int]] = []
+    
+    var setupPoint: [Int] = []
+    var setupBoardPoint: [Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -141,7 +179,18 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         targetNode?.name = "target"
         targetNode?.isHidden = true
         targetNode?.eulerAngles.x = -Float.pi / 2
-
+        
+        selectNode = SCNNode(geometry: selectPlane)
+        selectNode?.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+        selectNode?.name = "target"
+        selectNode?.isHidden = true
+        selectNode?.eulerAngles.x = -Float.pi / 2
+        
+        arrowNode = (self.arrowScene?.rootNode.childNode(withName: "arrow", recursively: false))!
+        arrowNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+        arrowNode.name = "board"
+        arrowNode.isHidden = true
+        
         lineNode?.isHidden = true
     }
     
@@ -161,31 +210,152 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     
     @objc func othelloSetup(_ sender: UIButton){
         
+        print("turnCount", turnCount)
         guard targetNode != nil else { return }
         guard boardPos != float3(0, 0, 0) else { return }
+        
+        now_othelloType = turnToOehtlloType(_turnCount: turnCount)
+        print("othellotype", now_othelloType!)
         
         var othelloNode = SCNNode()
         let othelloScene = SCNScene(named: "art.scnassets/othello.scn")
         othelloNode = (othelloScene?.rootNode.childNode(withName: "othello", recursively: false))!
         othelloNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-        othelloNode.name = "othello"
+        othelloNode.name = "othello\(turnCount)"
         othelloNode.scale = SCNVector3(0.007, 0.0007, 0.007)
-        othelloNode.position = SCNVector3(self.wboardArray[0][0].x, self.wboardArray[0][0].y, self.wboardArray[0][0].z)
+        
+        if now_othelloType == 2 {
+            othelloNode.eulerAngles.z = -Float.pi
+            print("オセロは白です")
+        } else {
+            print( "オセロは黒です")
+        }
+        othelloNode.position = SCNVector3(self.selectPos.x, self.selectPos.y, self.selectPos.z)
+        //オセロを置いた箇所の座標
+        print(availablePointArray)
+        print("selectIndex", selectIndex)
+        
+        setupPoint = availablePointArray[selectIndex]
+        print("setupPoint", setupPoint)
+        //boardSituに座標を合わせる
+        setupBoardPoint = setupPoint.map { $0 + 1 }
+        print("setupBoardPoint", setupBoardPoint)
         
         sceneView.scene.rootNode.addChildNode(othelloNode)
+        
+        reverseOthelo(_y_boardArray: setupBoardPoint[0], _x_boardArray: setupBoardPoint[1], stoneType: now_othelloType!)
+        deleteAvailablePlane(_availablePointArray: availablePointArray)
+        
+        turnCount += 1
+        now_othelloType = turnToOehtlloType(_turnCount: turnCount)
+        
+        availablePointArray = setupAvailable(selfOthello: now_othelloType!)
+        setupAvailablePlane(_availablePointArray: availablePointArray)
+    }
+    
+    func reverseOthelo(_y_boardArray: Int, _x_boardArray: Int, stoneType: Int) {
+        
+        var instanceAvailable: Bool = getstraightArray(y: _y_boardArray, x: _x_boardArray, selfStone: stoneType)
+        
+        var reverseDerectionArray: [Int] = []
+        var reverseDerectionIndex: Int = 0
+        
+        print("straighArray", straighArray)
+        for array in straighArray {
+            
+            if array.count > 1 && array.contains(stoneType) && array[0] != stoneType {
+                
+                reverseDerectionArray.append(reverseDerectionIndex)
+                reverseDerectionIndex += 1
+            } else {
+                
+                reverseDerectionIndex += 1
+            }
+        }
+        //置いたオセロと同じ石が見つかるまでオセロをひっくり返す
+        for reverseDerect in reverseDerectionArray {
+            
+            var roop: Bool = true
+            var reverseOthelloType: Int = 0
+            var reversedOthelloType: Int = 0
+            var roopTimes: Int = 1
+            var roopIndex: Int = 0
+            
+            while roop == true {
+                //オセロを置いた位置に対する検索オセロの位置を計算
+                var timesReverseDerect = derection_yx[reverseDerect].map { $0 * roopTimes }
+                //検索するオセロの座標を求める
+                var reversePoint = zip(setupBoardPoint, timesReverseDerect)
+                    .map(+)
+                print("reversePoint", reversePoint)
+                
+                reversedOthelloType = boardSituation[reversePoint[0]][reversePoint[1]]
+                print("reversedOthelloType", reversedOthelloType)
+                
+                if reversedOthelloType != stoneType {
+                    
+                    switch stoneType {
+                        
+                    case 1:
+                        boardSituation[reversePoint[0]][reversePoint[1]] = 1
+                        //オセロをひっくり返す
+                        let reverseMinusPoint = reversePoint.map { $0 - 1 }
+                        let boardCount = proceedBoard[reverseMinusPoint[0]][reverseMinusPoint[1]]
+                        print("boardCount", boardCount)
+                        let rotationCount = rotationCountBoard[reverseMinusPoint[0]][reverseMinusPoint[1]]
+                        print("rotationCount", rotationCount)
+                        var node = sceneView.scene.rootNode.childNode(withName: "othello\(boardCount)", recursively: true)
+                        //ひっくり返した回数に応じてオセロオブジェクトの回転角度を決める
+                        node?.eulerAngles.x = -Float.pi * Float(rotationCount)
+                        print("白をひっくり返しました")
+                        rotationCountBoard[reverseMinusPoint[0]][reverseMinusPoint[1]] = rotationCount + 1
+                        
+                    case 2:
+                        boardSituation[reversePoint[0]][reversePoint[1]]  = 2
+                        
+                        let reverseMinusPoint = reversePoint.map { $0 - 1 }
+                        print("reverseMinusPoint", reverseMinusPoint)
+                        let boardCount = proceedBoard[reverseMinusPoint[0]][reverseMinusPoint[1]]
+                        print("boardCount", boardCount)
+                        let rotationCount = rotationCountBoard[reverseMinusPoint[0]][reverseMinusPoint[1]]
+                        print("rotationCount", rotationCount)
+                        var node = sceneView.scene.rootNode.childNode(withName: "othello\(boardCount)", recursively: true)
+                        node?.eulerAngles.x = -Float.pi * Float(rotationCount)
+                        print("黒をひっくり返しました")
+                        rotationCountBoard[reverseMinusPoint[0]][reverseMinusPoint[1]] = rotationCount + 1
+                        
+                        
+                    default:
+                        
+                        fatalError("errorが発生しました")
+                    }
+                    
+                    roopIndex += 1
+                    roopTimes += 1
+                    roop = true
+                } else {
+                    roop = false
+                }
+            }
+        }
+        //boardに数字を設定
+//        print("setupBoardPoint", setupBoardPoint)
+        boardSituation[setupBoardPoint[0]][setupBoardPoint[1]] = now_othelloType!
+        proceedBoard[setupPoint[0]][setupPoint[1]] = turnCount
+        print(boardSituation)
+        print(proceedBoard)
+        print(rotationCountBoard)
     }
     
     private func setupBoardArray() {
         
         var iniboardPos = float3(boardPos.x - 0.07, boardPos.y + 0.01, boardPos.z - 0.07)
-        
-        for X in 0...7 {
-            for Z in  0...7 {
-                
+        //board上のマス目の座標を配列で取得する
+        for Z in 0...7 {
+            for X in  0...7 {
                 var tempPos = float3(0, 0, 0)
                 tempPos =  float3(iniboardPos.x + 0.02 * Float(X), iniboardPos.y, iniboardPos.z + 0.02 * Float(Z))
                 boardArray.append(tempPos)
-                
                 if boardArray.count == 8 {
                     
                     wboardArray.append(boardArray)
@@ -194,25 +364,31 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             }
         }
         
-        let intArray: [[Int]] = [[3, 3], [4, 4], [3, 4], [4, 3]]
+        let intArray: [[Int]] = [[3, 3], [3, 4], [4, 3], [4, 4]]
         let intCount = intArray.count
         
-        for i in 0...3 {
+        for i in 0...intCount - 1 {
             
+            turnCount += 1
+            var stoneInt = othelloType.black.rawValue
             var othelloNode = SCNNode()
             let othelloScene = SCNScene(named: "art.scnassets/othello.scn")
             othelloNode = (othelloScene?.rootNode.childNode(withName: "othello", recursively: false))!
             othelloNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-            othelloNode.name = "othello"
+            othelloNode.name = "othello\(turnCount)"
+//            print(othelloNode.name)
             othelloNode.scale = SCNVector3(0.007, 0.0007, 0.007)
-            
             //初期白設定
-            if i == 0 || i == 1 {
+            if i == 0 || i == 3 {
                 
                 othelloNode.eulerAngles.z = -Float.pi
+                stoneInt = othelloType.white.rawValue
             }
             
-            var tempInt = intArray[i]
+            let tempInt = intArray[i]
+            
+            proceedBoard[tempInt[0]][tempInt[1]] = turnCount
+            boardSituation[tempInt[0] + 1][tempInt[1] + 1] = stoneInt
             
             othelloNode.position = SCNVector3(self.wboardArray[tempInt[0]][tempInt[1]].x,
                                               self.wboardArray[tempInt[0]][tempInt[1]].y,
@@ -220,28 +396,120 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             
             sceneView.scene.rootNode.addChildNode(othelloNode)
         }
+        //指定した名前を持つオセロをひっくり返す
+        //        let node = sceneView.scene.rootNode.childNode(withName: "othello2", recursively: true)
+        //        node?.eulerAngles.x = -Float.pi
         
+        turnCount += 1
+        let _othellotype = turnToOehtlloType(_turnCount: turnCount)
         
-        let availablePointArray = setupAvailable(selfOthello: othelloType.black.rawValue)
+        availablePointArray = setupAvailable(selfOthello: _othellotype)
         setupAvailablePlane(_availablePointArray: availablePointArray)
     }
     
-    //石を置ける箇所を3Dモデル上で表示
-    func setupAvailablePlane(_availablePointArray: [[Int]]) {
+    private func selectSetupPoint(_currentPos: SCNVector3) -> float3 {
         
+        guard targetNode != nil else { return float3(0, 0, 0) }
+        guard boardPos != float3(0, 0, 0) else { return float3(0, 0, 0) }
+        
+        let current_x = _currentPos.x
+        let current_y = _currentPos.y
+        let current_z = _currentPos.z
+        
+        var tempAvailablePostion: [float3] = []
+        
+        for array in availablePointArray {
+            
+            tempAvailablePostion.append(self.wboardArray[array[0]][array[1]])
+        }
+        
+        var distanceArray: [Double] = []
+        //Z軸基準でオセロの位置を並び替え
+//        print(tempAvailablePostion)
+        tempAvailablePostion = tempAvailablePostion.sorted {
+
+            if $0.z < $1.z {
+
+                return true
+            } else if $0.z == $1.z && $0.x < $1.x {
+
+                return true
+            } else {
+
+                return false
+            }
+        }
+//        print(tempAvailablePostion)
+        
+        for array in tempAvailablePostion {
+            
+            let array_x = array.x
+            let array_y = array.y
+            let array_z = array.z
+            
+            let dx = Double(current_x - array_x)
+            let dy = Double(current_y - array_y)
+            let dz = Double(current_z - array_z)
+            
+            let distance: Double = sqrt(dx*dx + dy*dy + dz*dz)
+            
+            distanceArray.append(distance)
+        }
+        //一番距離の近いマスの距離を算出
+        let minLength: Double = distanceArray.min()!
+        
+        selectIndex = distanceArray.firstIndex(of: minLength)!
+//        print(availablePointArray)
+//        print("selectIndex", selectIndex)
+        let selectPosition = tempAvailablePostion[selectIndex]
+        return selectPosition
+    }
+    //作成した設置可能箇所のモデルを削除する
+    private func deleteAvailablePlane(_availablePointArray: [[Int]]) {
+        
+        let planeCount = _availablePointArray.count
+        for i in 1...planeCount {
+            
+            let node = sceneView.scene.rootNode.childNode(withName: "plane\(i)", recursively: true)
+            node?.removeFromParentNode()
+        }
+    }
+    //石を置ける箇所を3Dモデル上で表示
+    private func setupAvailablePlane(_availablePointArray: [[Int]]) {
+        
+        var arrayCount: Int = 1
         for array in _availablePointArray {
             
             var availablePlaneNode = SCNNode()
             availablePlaneNode = SCNNode(geometry: availablePlane)
             availablePlaneNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
             availablePlaneNode.eulerAngles.x = -Float.pi / 2
-            
+            availablePlaneNode.name = "plane\(arrayCount)"
             availablePlaneNode.position = SCNVector3(self.wboardArray[array[0]][array[1]].x,
                                                      self.wboardArray[array[0]][array[1]].y,
                                                      self.wboardArray[array[0]][array[1]].z)
             
             sceneView.scene.rootNode.addChildNode(availablePlaneNode)
+            
+            arrayCount += 1
         }
+    }
+    //ターン数からオセロの色を求める
+    func turnToOehtlloType(_turnCount: Int) -> Int {
+        
+        var roop: Bool = true
+        var turn = _turnCount
+        
+        while roop == true {
+            turn -= 2
+            if turn < 1 {
+                roop = false
+            } else {
+                
+            }
+        }
+        turn += 2
+        return turn
     }
     
     //オセロを置ける箇所の座標を返す
@@ -249,6 +517,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         
         var tempBool: Bool = false
         var tempBoolArray: [Bool] = []
+        boardBoolArray = []
         
         for _y in 1...8 {
             for _x in 1...8 {
@@ -267,12 +536,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         var tempArray_x: Int = 0
         var tempArray_y: Int = 0
         var tempArray_xy: [[Int]] = []
-        
         //石を置ける場所の配列を求める
         for array in boardBoolArray {
-
-            var _arrayCount = array.count - 1
             
+            var _arrayCount = array.count - 1
             if !array.contains(true) {
                 
                 tempArray_y += 1
@@ -295,29 +562,26 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         
         return tempArray_xy
     }
-    
     //座標から放射線状に存在する石を返す
     func getstraightArray(y: Int, x: Int, selfStone: Int) -> Bool {
-        
         //stoneのnoneチェック
-        let stoneValue: Int = boardsitu[y][x]
+        let stoneValue: Int = boardSituation[y][x]
         if stoneValue != 0 {
-//            print("石が置かれています")
+
             return false
-            
         } else {
-//            print("石を置けます")
+
         }
         
-        var straighArray: [[Int]] = []
         var available: Bool = false
+        straighArray = []
         
         for i in 0...7 {
             
-            let derect = DIRECTIONS_YX[i]
-            let dx: Int = derect[0]
-            let dy: Int = derect[1]
- 
+            let derect = derection_yx[i]
+            let dy: Int = derect[0]
+            let dx: Int = derect[1]
+            
             var roop: Bool = true
             var roopTime: Int = 1
             
@@ -325,9 +589,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             
             while roop == true {
                 
-                let x_dx = x + dx * roopTime
                 let y_dy = y + dy * roopTime
-                let stoneInt: Int = boardsitu[y_dy][x_dx]
+                let x_dx = x + dx * roopTime
+                let stoneInt: Int = boardSituation[y_dy][x_dx]
                 
                 tempStraighArray.append(stoneInt)
                 
@@ -347,6 +611,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         for array in straighArray {
             
             if array.count > 1 && array.contains(selfStone) && array[0] != selfStone {
+                
                 available = true
             } else {
                 continue
@@ -359,7 +624,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
         targetNode?.isHidden = false
-        lineNode?.isHidden = false
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -372,14 +636,31 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                 let result = exisitingPlaneUsingGeometryResult
                 
                 self.currentPos = float3(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
-                self.targetNode?.position = SCNVector3(self.currentPos.x, self.currentPos.y, self.currentPos.z)
+                if self.boardPos == float3(0, 0, 0) {
+                    
+                    self.targetNode?.position = SCNVector3(self.currentPos.x, self.currentPos.y, self.currentPos.z)
+                    self.arrowNode.isHidden = false
+                    self.arrowNode.position = SCNVector3(self.currentPos.x, self.currentPos.y + 0.04, self.currentPos.z)
+                    self.arrowNode.scale = SCNVector3(0.0025, 0.0025, 0.0025)
+                    self.arrowNode.eulerAngles.z = -Float.pi/2
+                    self.sceneView.scene.rootNode.addChildNode(self.arrowNode)
+                    
+                } else {
+                    
+                    self.targetNode?.position = SCNVector3(self.currentPos.x, self.boardPos.y, self.currentPos.z)
+                    self.arrowNode.isHidden = false
+                    self.arrowNode.position = SCNVector3(self.currentPos.x, self.boardPos.y + 0.04, self.currentPos.z)
+                    self.arrowNode.scale = SCNVector3(0.0025, 0.0025, 0.0025)
+                    self.arrowNode.eulerAngles.z = -Float.pi/2
+                    self.sceneView.scene.rootNode.addChildNode(self.arrowNode)
+                }
                 self.sceneView.scene.rootNode.addChildNode(self.targetNode!)
                 
-                //ポインタノードの削除
-                if self.lineNode != nil { self.lineNode?.removeFromParentNode() } else { }
+                self.selectPos = self.selectSetupPoint(_currentPos: SCNVector3(self.currentPos))
+                self.selectNode?.isHidden = false
+                self.selectNode?.position = SCNVector3(self.selectPos.x, self.selectPos.y, self.selectPos.z)
+                self.sceneView.scene.rootNode.addChildNode(self.selectNode!)
                 
-                self.lineNode = self.drawLine(from: SCNVector3(self.startPos), to: SCNVector3(self.currentPos))
-                self.sceneView.scene.rootNode.addChildNode(self.lineNode!)
             }
         }
     }
