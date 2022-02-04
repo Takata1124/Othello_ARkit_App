@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682002DE27ADC73A002E1CE1 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 682002DD27ADC73A002E1CE1 /* Start.storyboard */; };
 		68A4939527A4161C00303DDB /* othelloModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A4939427A4161C00303DDB /* othelloModel.swift */; };
 		68E13B5227A161CE00BC289E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B5127A161CE00BC289E /* AppDelegate.swift */; };
 		68E13B5427A161CE00BC289E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 68E13B5327A161CE00BC289E /* art.scnassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		682002DD27ADC73A002E1CE1 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		68A4939427A4161C00303DDB /* othelloModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = othelloModel.swift; sourceTree = "<group>"; };
 		68E13B4E27A161CE00BC289E /* Osero_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Osero_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E13B5127A161CE00BC289E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				68E13B5127A161CE00BC289E /* AppDelegate.swift */,
 				68E13B5327A161CE00BC289E /* art.scnassets */,
 				68E13B5727A161CE00BC289E /* Main.storyboard */,
+				682002DD27ADC73A002E1CE1 /* Start.storyboard */,
 				68E13B5A27A161D000BC289E /* Assets.xcassets */,
 				68E13B5C27A161D000BC289E /* LaunchScreen.storyboard */,
 				68E13B5527A161CE00BC289E /* ViewController.swift */,
@@ -242,6 +245,7 @@
 			files = (
 				68E13B5427A161CE00BC289E /* art.scnassets in Resources */,
 				68E13B5E27A161D000BC289E /* LaunchScreen.storyboard in Resources */,
+				682002DE27ADC73A002E1CE1 /* Start.storyboard in Resources */,
 				68E13B5B27A161D000BC289E /* Assets.xcassets in Resources */,
 				68E13B5927A161CE00BC289E /* Main.storyboard in Resources */,
 			);
