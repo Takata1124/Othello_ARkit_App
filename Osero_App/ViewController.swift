@@ -94,6 +94,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         return button
     }()
     
+    private let backButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .lightGray
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 1
+        button.setTitle("back", for: .normal)
+        button.titleLabel?.tintColor = .black
+        return button
+    }()
+    
     let tagetPlane: SCNPlane = {
         let plane = SCNPlane(width: 0.01, height: 0.01)
         plane.cornerRadius = 1
@@ -156,7 +166,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                                        [1, 1, 1, 1, 1, 1, 1, 1],
                                        [1, 1, 1, 1, 1, 1, 1, 1]]
     
+    
+    
     var boardBoolArray: [[Bool]] = []
+    var boardReveseCountArray: [[Int]] = []
     var availablePointArray: [[Int]] = []
     
     var screenCenter: CGPoint {
@@ -197,7 +210,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     //ゲームの一時中断
     var gameContnue: Bool?
     var availableAreaCount: Int = 64
-
+    //ゲームモードの選択
+    var gameMode: Int?
+    var cpuOthelloType: Int = othelloType.white.rawValue
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -222,6 +238,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         sceneView.addSubview(othelloButton)
         sceneView.addSubview(passButton)
         sceneView.addSubview(clearButton)
+        sceneView.addSubview(backButton)
         
         boardButton.addTarget(self, action: #selector(self.boardSetup(_ :)), for: .touchUpInside)
         boardButton.snp.makeConstraints { make in
@@ -255,6 +272,14 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             make.top.equalTo(sceneView.snp.top).offset(50)
         }
         
+        backButton.addTarget(self, action: #selector(self.dismissSetup(_ :)), for: .touchUpInside)
+        backButton.snp.makeConstraints { make in
+            
+            make.size.equalTo(100)
+            make.left.equalTo(sceneView.snp.left).offset(10)
+            make.top.equalTo(sceneView.snp.top).offset(50)
+        }
+        
         boardNode = (self.boardscene?.rootNode.childNode(withName: "board", recursively: false))!
         boardNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         boardNode.name = "board"
@@ -262,7 +287,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         targetNode = SCNNode(geometry: tagetPlane)
         targetNode?.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         targetNode?.name = "target"
-        targetNode?.isHidden = true
+        targetNode?.isHidden = false
         targetNode?.eulerAngles.x = -Float.pi / 2
         
         selectNode = SCNNode(geometry: selectPlane)
@@ -283,11 +308,21 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         gameContnue = true
     }
     
+    @objc func dismissSetup(_ sender: UIButton){
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @objc func clearSetup(_ sender: UIButton){
         
     }
     
     @objc func passSetup(_ sender: UIButton){
+        
+        passImplement()
+    }
+    //パスボタンを押した時の処理
+    func passImplement() {
         
         if availableAreaCount < 1 { return } else { }
         setupNextTreatment()
@@ -307,7 +342,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         boardNode.eulerAngles.y = -Float.pi/2
         sceneView.scene.rootNode.addChildNode(boardNode)
         //ターンモデルの作成
-        makeGameTurnModel(x: boardPos.x + 0.07, y: boardPos.y + 0.08, z: boardPos.z - 0.07)
+        makeGameTurnModel(x: boardPos.x, y: boardPos.y + 0.08, z: boardPos.z - 0.07)
         
         setupBoardArray()
     }
@@ -391,6 +426,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         var wall: Int = 0
         for y in 0...9 {
             for x in 0...9 {
+                
                 switch boardSituation[y][x]{
                     
                 case othelloType.black.rawValue:
@@ -427,13 +463,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             sampleText.materials = [sampleMaterial]
             
             let sampleNode = SCNNode(geometry: sampleText)
-
+            
             sampleNode.position = SCNVector3(x,y,z)
             sampleNode.scale = SCNVector3(0.001,0.001,0.001)
             sampleNode.name = nameArray[i]
             sceneView.scene.rootNode.addChildNode(sampleNode)
-            
-            
         }
     }
     //オセロ数のモデルを表示
@@ -451,7 +485,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         default:
             fatalError("error")
         }
-
+        
         sampleText.materials = [sampleMaterial]
         let sampleNode = SCNNode(geometry: sampleText)
         sampleNode.position = SCNVector3(x,y,z)
@@ -467,11 +501,27 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         whiteNode?.removeFromParentNode()
         blackNode?.removeFromParentNode()
     }
-    
+    //オセロ置く動作
     @objc func othelloSetup(_ sender: UIButton){
         
         guard targetNode != nil else { return }
         guard boardPos != float3(0, 0, 0) else { return }
+        
+        //オセロモデルの作成
+        makeOthelloModel(makePos: selectPos)
+        //オセロを置いた処理
+        availableAreaCount -= 1
+        //オセロを置いた箇所の座標
+        setupPoint = availablePointArray[selectIndex]
+        //boardSituに座標を合わせる
+        setupBoardPoint = setupPoint.map { $0 + 1 }
+        reverseOthelo(_y_boardArray: setupBoardPoint[0], _x_boardArray: setupBoardPoint[1], stoneType: now_othelloType!)
+        deleteAvailablePlane(_availablePointArray: availablePointArray)
+        
+        setupNextTreatment()
+    }
+    //オセロモデルの作成
+    private func makeOthelloModel(makePos: float3) {
         
         now_othelloType = turnToOehtlloType(_turnCount: turnCount)
         
@@ -484,23 +534,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         
         if now_othelloType == 2 {
             othelloNode.eulerAngles.z = -Float.pi
-//            print("オセロは白です")
+            //            print("オセロは白です")
         } else {
-//            print( "オセロは黒です")
+            //            print( "オセロは黒です")
         }
-        othelloNode.position = SCNVector3(self.selectPos.x, self.selectPos.y, self.selectPos.z)
-        
-        availableAreaCount -= 1
-        //オセロを置いた箇所の座標
-        setupPoint = availablePointArray[selectIndex]
-        //boardSituに座標を合わせる
-        setupBoardPoint = setupPoint.map { $0 + 1 }
+        othelloNode.position = SCNVector3(makePos.x, makePos.y, makePos.z)
         sceneView.scene.rootNode.addChildNode(othelloNode)
-        
-        reverseOthelo(_y_boardArray: setupBoardPoint[0], _x_boardArray: setupBoardPoint[1], stoneType: now_othelloType!)
-        deleteAvailablePlane(_availablePointArray: availablePointArray)
-        
-        setupNextTreatment()
     }
     //次のオセロの準備
     func setupNextTreatment() {
@@ -512,12 +551,33 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         guard availablePointArray != [] else { return passTreatment() }
         
         setupAvailablePlane(_availablePointArray: availablePointArray)
-        
         //各種オセロの数をカウント
         deleteDisplayFigureModel()
         let othelloCount: (Int, Int) = stoneTypeCount()
         displayFigureModel(x: boardPos.x - 0.07, y: boardPos.y + 0.08, z: boardPos.z - 0.07, stoneCount: othelloCount.0, othelloText: "black")
         displayFigureModel(x: boardPos.x - 0.07, y: boardPos.y + 0.06, z: boardPos.z - 0.07, stoneCount: othelloCount.1, othelloText: "white")
+        //CPUの処理
+        now_othelloType = turnToOehtlloType(_turnCount: turnCount)
+        
+        if cpuOthelloType == now_othelloType {
+            
+            let enemyPlayer = EnemyPlayer(availableAreaArray: availablePointArray)
+            let enemySetupPoint: [Int] = enemyPlayer.Random()
+            
+            let enemyPostion: float3 = wboardArray[enemySetupPoint[0]][enemySetupPoint[1]]
+            
+            makeOthelloModel(makePos: enemyPostion)
+            //オセロを置いた処理
+            availableAreaCount -= 1
+            //オセロを置いた箇所の座標
+            setupPoint = enemySetupPoint
+            //boardSituに座標を合わせる
+            setupBoardPoint = setupPoint.map { $0 + 1 }
+            reverseOthelo(_y_boardArray: setupBoardPoint[0], _x_boardArray: setupBoardPoint[1], stoneType: now_othelloType!)
+            deleteAvailablePlane(_availablePointArray: availablePointArray)
+            
+            setupNextTreatment()
+        }
     }
     
     func passTreatment() {
@@ -532,11 +592,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             passButtonSelectBool = false
             duelComplete()
         }
+        
+        if now_othelloType == cpuOthelloType {
+            passImplement()
+        } else {
+            
+        }
     }
     //オセロを裏返す処理
     func reverseOthelo(_y_boardArray: Int, _x_boardArray: Int, stoneType: Int) {
         //straightArrayを取得するために実行
-        var _: Bool = getstraightArray(y: _y_boardArray, x: _x_boardArray, selfStone: stoneType)
+        var _: (Bool, Int) = getstraightArray(y: _y_boardArray, x: _x_boardArray, selfStone: stoneType)
         var reverseDerectionArray: [Int] = []
         var reverseDerectionIndex: Int = 0
         
@@ -578,7 +644,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                         var node = sceneView.scene.rootNode.childNode(withName: "othello\(boardCount)", recursively: true)
                         //ひっくり返した回数に応じてオセロオブジェクトの回転角度を決める
                         node?.eulerAngles.x = -Float.pi * Float(rotationCount)
-//                        print("白をひっくり返しました")
+                        //                        print("白をひっくり返しました")
                         rotationCountBoard[reverseMinusPoint[0]][reverseMinusPoint[1]] = rotationCount + 1
                         
                     case othelloType.white.rawValue:
@@ -589,7 +655,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                         let rotationCount = rotationCountBoard[reverseMinusPoint[0]][reverseMinusPoint[1]]
                         var node = sceneView.scene.rootNode.childNode(withName: "othello\(boardCount)", recursively: true)
                         node?.eulerAngles.x = -Float.pi * Float(rotationCount)
-//                        print("黒をひっくり返しました")
+                        //                        print("黒をひっくり返しました")
                         rotationCountBoard[reverseMinusPoint[0]][reverseMinusPoint[1]] = rotationCount + 1
                         
                     default:
@@ -605,6 +671,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         }
         //boardに数字を設定
         boardSituation[setupBoardPoint[0]][setupBoardPoint[1]] = now_othelloType!
+        //進捗状況を記録
         proceedBoard[setupPoint[0]][setupPoint[1]] = turnCount
     }
     //カーソルを合わせたポイントから最も近いオセロを置ける箇所の座標を返す
@@ -699,22 +766,31 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     func setupAvailable(selfOthello: Int) -> [[Int]] {
         
         var tempBool: Bool = false
+        var tempInt: Int = 0
         var tempBoolArray: [Bool] = []
+        var tempReverseArray: [Int] = []
         //置ける箇所のbool初期化
         boardBoolArray = []
+        boardReveseCountArray = []
         
         for _y in 1...8 {
             for _x in 1...8 {
                 
-                tempBool = getstraightArray(y: _y, x: _x, selfStone: selfOthello)
+                (tempBool, tempInt) = getstraightArray(y: _y, x: _x, selfStone: selfOthello)
+                
                 tempBoolArray.append(tempBool)
+                //返す石の数の配列を作成
+                tempReverseArray.append(tempInt)
                 if tempBoolArray.count == 8 {
-
+                    
                     boardBoolArray.append(tempBoolArray)
+                    boardReveseCountArray.append(tempReverseArray)
                     tempBoolArray = []
+                    tempReverseArray = []
                 }
             }
         }
+        print(boardReveseCountArray)
         
         var tempArray_x: Int = 0
         var tempArray_y: Int = 0
@@ -739,16 +815,18 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                 tempArray_y += 1
             }
         }
-        
         return tempArray_xy
     }
     //座標から放射線状に存在する石を返す
-    func getstraightArray(y: Int, x: Int, selfStone: Int) -> Bool {
+    func getstraightArray(y: Int, x: Int, selfStone: Int) -> (Bool, Int) {
+        
+        var reverseCount: Int = 0
+        var reverseArray: [[Int]] = []
         //空いているますかチェック
         let stoneValue: Int = boardSituation[y][x]
         if stoneValue != 0 {
             
-            return false
+            return (false, 0)
         } else {
         }
         var available: Bool = false
@@ -784,27 +862,70 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                 }
             }
         }
+        //置ける場所かどうかをboolで返す
         for array in straightArray {
-            
             if array.count > 1 && array.contains(selfStone) && array[0] != selfStone {
-
                 available = true
+                //置ける場所の配列を挿入
+                reverseArray.append(array)
             } else {
                 continue
             }
         }
-        return available
+        //置ける箇所のひっくり返す石の数を算出
+        for array in reverseArray {
+            
+            var i: Int = 0
+            var roop: Bool = true
+            
+            switch now_othelloType {
+            case othelloType.black.rawValue:
+                while roop == true {
+                    if array[i] == othelloType.white.rawValue {
+                        reverseCount += 1
+                        i += 1
+                        roop = true
+                    } else {
+                        roop = false
+                        break
+                    }
+                }
+                
+            case othelloType.white.rawValue:
+                while roop == true {
+                    if array[i] == othelloType.black.rawValue {
+                        reverseCount += 1
+                        i += 1
+                        roop = true
+                    } else {
+                        roop = false
+                        break
+                    }
+                }
+            case .none:
+                fatalError()
+            case .some(_):
+                fatalError()
+            }
+        }
+        
+        return (available, reverseCount)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
-        targetNode?.isHidden = false
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         //エリア全てにオセロが置かれた際の終了操作
         guard gameContnue == true else { return }
-        if availableAreaCount > 0 { } else { return }
+        if availableAreaCount > 0 {
+        }
+        else {
+            //終了処理の際矢印が消えないことがあるため
+            arrowNode.isHidden = true
+            return
+        }
         
         DispatchQueue.main.async {
             

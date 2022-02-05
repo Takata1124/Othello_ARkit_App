@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		682002DE27ADC73A002E1CE1 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 682002DD27ADC73A002E1CE1 /* Start.storyboard */; };
+		682002E027AE79C5002E1CE1 /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682002DF27AE79C5002E1CE1 /* startViewController.swift */; };
+		682002E227AE9725002E1CE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682002E127AE9725002E1CE1 /* Extensions.swift */; };
 		68A4939527A4161C00303DDB /* othelloModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A4939427A4161C00303DDB /* othelloModel.swift */; };
+		68CCD51F27AECC7B00BBB57F /* EnemyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCD51E27AECC7B00BBB57F /* EnemyPlayer.swift */; };
 		68E13B5227A161CE00BC289E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B5127A161CE00BC289E /* AppDelegate.swift */; };
 		68E13B5427A161CE00BC289E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 68E13B5327A161CE00BC289E /* art.scnassets */; };
 		68E13B5627A161CE00BC289E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B5527A161CE00BC289E /* ViewController.swift */; };
@@ -40,7 +43,10 @@
 
 /* Begin PBXFileReference section */
 		682002DD27ADC73A002E1CE1 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		682002DF27AE79C5002E1CE1 /* startViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
+		682002E127AE9725002E1CE1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		68A4939427A4161C00303DDB /* othelloModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = othelloModel.swift; sourceTree = "<group>"; };
+		68CCD51E27AECC7B00BBB57F /* EnemyPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyPlayer.swift; sourceTree = "<group>"; };
 		68E13B4E27A161CE00BC289E /* Osero_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Osero_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E13B5127A161CE00BC289E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68E13B5327A161CE00BC289E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -111,7 +117,10 @@
 				68E13B5A27A161D000BC289E /* Assets.xcassets */,
 				68E13B5C27A161D000BC289E /* LaunchScreen.storyboard */,
 				68E13B5527A161CE00BC289E /* ViewController.swift */,
+				682002DF27AE79C5002E1CE1 /* startViewController.swift */,
 				68A4939427A4161C00303DDB /* othelloModel.swift */,
+				682002E127AE9725002E1CE1 /* Extensions.swift */,
+				68CCD51E27AECC7B00BBB57F /* EnemyPlayer.swift */,
 			);
 			path = Osero_App;
 			sourceTree = "<group>";
@@ -273,8 +282,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				68E13B5627A161CE00BC289E /* ViewController.swift in Sources */,
+				682002E027AE79C5002E1CE1 /* startViewController.swift in Sources */,
 				68E13B5227A161CE00BC289E /* AppDelegate.swift in Sources */,
+				68CCD51F27AECC7B00BBB57F /* EnemyPlayer.swift in Sources */,
 				68A4939527A4161C00303DDB /* othelloModel.swift in Sources */,
+				682002E227AE9725002E1CE1 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +471,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Start;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -490,7 +502,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Start;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
