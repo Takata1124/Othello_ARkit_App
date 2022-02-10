@@ -10,6 +10,11 @@ import SnapKit
 
 class startViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
+    enum gameModeType: Int {
+        case enemyWeak = 0
+        case enemyStrong = 1
+    }
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "ARオセロ"
@@ -44,6 +49,7 @@ class startViewController: UIViewController, UIViewControllerTransitioningDelega
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.black, for: .normal)
         button.backgroundColor = .lightGray
+        button.addTarget(self, action: #selector(startViewController.singleStrongSetup(_ :)), for: .touchUpInside)
         return button
     }()
     
@@ -52,11 +58,12 @@ class startViewController: UIViewController, UIViewControllerTransitioningDelega
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 20
-        button.setTitle("対戦モード", for: .normal)
+        button.setTitle("対戦モード(実装中)", for: .normal)
+        button.titleLabel?.numberOfLines = 0
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.black, for: .normal)
-        button.backgroundColor = .lightGray
-        
+        button.backgroundColor = UIColor.rgba(red: 0, green: 51, blue: 102, alpha: 1)
         return button
     }()
     
@@ -68,6 +75,7 @@ class startViewController: UIViewController, UIViewControllerTransitioningDelega
         button.setImage(UIImage(systemName: "gearshape")?.resize(size: .init(width: 50 * 0.5, height:  50 * 0.5)), for: .normal)
         button.backgroundColor = .lightGray
         button.setTitleColor(UIColor.black, for: .normal)
+        button.addTarget(self, action: #selector(startViewController.settingSetup(_ :)), for: .touchUpInside)
         return button
     }()
     
@@ -111,17 +119,14 @@ class startViewController: UIViewController, UIViewControllerTransitioningDelega
         }
         
         singlWeakButton.snp.makeConstraints { make in
-            
             make.size.equalTo(100)
         }
         
         singleStrongButton.snp.makeConstraints { make in
-            
             make.size.equalTo(100)
         }
         
         duelButton.snp.makeConstraints { make in
-            
             make.size.equalTo(100)
         }
         
@@ -143,8 +148,28 @@ class startViewController: UIViewController, UIViewControllerTransitioningDelega
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        //値渡し
+        viewController.gameMode = gameModeType.enemyWeak.rawValue
         viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true, completion: nil)
+    }
+    
+    @objc func singleStrongSetup(_ sender: UIButton){
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        //値渡し
+        viewController.gameMode = gameModeType.enemyStrong.rawValue
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    @objc func settingSetup(_ sender: UIButton){
+        
+        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+        let settingviewController = storyboard.instantiateViewController(withIdentifier: "settingViewController") as! settingViewController
+        settingviewController.modalPresentationStyle = .fullScreen
+        self.present(settingviewController, animated: true, completion: nil)
     }
 }
 

@@ -10,8 +10,12 @@
 		682002DE27ADC73A002E1CE1 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 682002DD27ADC73A002E1CE1 /* Start.storyboard */; };
 		682002E027AE79C5002E1CE1 /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682002DF27AE79C5002E1CE1 /* startViewController.swift */; };
 		682002E227AE9725002E1CE1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682002E127AE9725002E1CE1 /* Extensions.swift */; };
-		68A4939527A4161C00303DDB /* othelloModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A4939427A4161C00303DDB /* othelloModel.swift */; };
 		68CCD51F27AECC7B00BBB57F /* EnemyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCD51E27AECC7B00BBB57F /* EnemyPlayer.swift */; };
+		68CCD52127AFB8D800BBB57F /* EnemyStrongPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCD52027AFB8D800BBB57F /* EnemyStrongPlayer.swift */; };
+		68CCD52327AFEDBC00BBB57F /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68CCD52227AFEDBC00BBB57F /* Setting.storyboard */; };
+		68CCD52527AFEDF000BBB57F /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCD52427AFEDF000BBB57F /* settingViewController.swift */; };
+		68CCD52727B027DE00BBB57F /* StartTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCD52627B027DE00BBB57F /* StartTopView.swift */; };
+		68CCD52927B028AB00BBB57F /* StartTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCD52827B028AB00BBB57F /* StartTableView.swift */; };
 		68E13B5227A161CE00BC289E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B5127A161CE00BC289E /* AppDelegate.swift */; };
 		68E13B5427A161CE00BC289E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 68E13B5327A161CE00BC289E /* art.scnassets */; };
 		68E13B5627A161CE00BC289E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E13B5527A161CE00BC289E /* ViewController.swift */; };
@@ -45,9 +49,13 @@
 		682002DD27ADC73A002E1CE1 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		682002DF27AE79C5002E1CE1 /* startViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
 		682002E127AE9725002E1CE1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		68A4939427A4161C00303DDB /* othelloModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = othelloModel.swift; sourceTree = "<group>"; };
 		68CCD51E27AECC7B00BBB57F /* EnemyPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyPlayer.swift; sourceTree = "<group>"; };
-		68E13B4E27A161CE00BC289E /* Osero_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Osero_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68CCD52027AFB8D800BBB57F /* EnemyStrongPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyStrongPlayer.swift; sourceTree = "<group>"; };
+		68CCD52227AFEDBC00BBB57F /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		68CCD52427AFEDF000BBB57F /* settingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
+		68CCD52627B027DE00BBB57F /* StartTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTopView.swift; sourceTree = "<group>"; };
+		68CCD52827B028AB00BBB57F /* StartTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTableView.swift; sourceTree = "<group>"; };
+		68E13B4E27A161CE00BC289E /* Othello_AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Othello_AR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E13B5127A161CE00BC289E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68E13B5327A161CE00BC289E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		68E13B5527A161CE00BC289E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +108,7 @@
 		68E13B4F27A161CE00BC289E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				68E13B4E27A161CE00BC289E /* Osero_App.app */,
+				68E13B4E27A161CE00BC289E /* Othello_AR.app */,
 				68E13B6327A161D000BC289E /* Osero_AppTests.xctest */,
 				68E13B6D27A161D000BC289E /* Osero_AppUITests.xctest */,
 			);
@@ -110,17 +118,21 @@
 		68E13B5027A161CE00BC289E /* Osero_App */ = {
 			isa = PBXGroup;
 			children = (
-				68E13B5127A161CE00BC289E /* AppDelegate.swift */,
 				68E13B5327A161CE00BC289E /* art.scnassets */,
 				68E13B5727A161CE00BC289E /* Main.storyboard */,
 				682002DD27ADC73A002E1CE1 /* Start.storyboard */,
-				68E13B5A27A161D000BC289E /* Assets.xcassets */,
+				68CCD52227AFEDBC00BBB57F /* Setting.storyboard */,
 				68E13B5C27A161D000BC289E /* LaunchScreen.storyboard */,
-				68E13B5527A161CE00BC289E /* ViewController.swift */,
+				68E13B5A27A161D000BC289E /* Assets.xcassets */,
+				68CCD52627B027DE00BBB57F /* StartTopView.swift */,
+				68CCD52827B028AB00BBB57F /* StartTableView.swift */,
+				68E13B5127A161CE00BC289E /* AppDelegate.swift */,
 				682002DF27AE79C5002E1CE1 /* startViewController.swift */,
-				68A4939427A4161C00303DDB /* othelloModel.swift */,
+				68E13B5527A161CE00BC289E /* ViewController.swift */,
+				68CCD52427AFEDF000BBB57F /* settingViewController.swift */,
 				682002E127AE9725002E1CE1 /* Extensions.swift */,
 				68CCD51E27AECC7B00BBB57F /* EnemyPlayer.swift */,
+				68CCD52027AFB8D800BBB57F /* EnemyStrongPlayer.swift */,
 			);
 			path = Osero_App;
 			sourceTree = "<group>";
@@ -162,7 +174,7 @@
 				68E13B8127A233FA00BC289E /* SnapKit */,
 			);
 			productName = Osero_App;
-			productReference = 68E13B4E27A161CE00BC289E /* Osero_App.app */;
+			productReference = 68E13B4E27A161CE00BC289E /* Othello_AR.app */;
 			productType = "com.apple.product-type.application";
 		};
 		68E13B6227A161D000BC289E /* Osero_AppTests */ = {
@@ -257,6 +269,7 @@
 				682002DE27ADC73A002E1CE1 /* Start.storyboard in Resources */,
 				68E13B5B27A161D000BC289E /* Assets.xcassets in Resources */,
 				68E13B5927A161CE00BC289E /* Main.storyboard in Resources */,
+				68CCD52327AFEDBC00BBB57F /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,10 +295,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				68E13B5627A161CE00BC289E /* ViewController.swift in Sources */,
+				68CCD52127AFB8D800BBB57F /* EnemyStrongPlayer.swift in Sources */,
+				68CCD52927B028AB00BBB57F /* StartTableView.swift in Sources */,
 				682002E027AE79C5002E1CE1 /* startViewController.swift in Sources */,
 				68E13B5227A161CE00BC289E /* AppDelegate.swift in Sources */,
 				68CCD51F27AECC7B00BBB57F /* EnemyPlayer.swift in Sources */,
-				68A4939527A4161C00303DDB /* othelloModel.swift in Sources */,
+				68CCD52527AFEDF000BBB57F /* settingViewController.swift in Sources */,
+				68CCD52727B027DE00BBB57F /* StartTopView.swift in Sources */,
 				682002E227AE9725002E1CE1 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,11 +480,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 2FZRK6M67D;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = OthelloAR;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "ARオセロ";
+				INFOPLIST_KEY_NSCameraUsageDescription = "カメラで撮影した映像にアクセスし、映像上にオセロモデルを表示します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Start;
@@ -480,9 +496,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.softbank.i.tktaaa1124.Osero-App";
+				PRODUCT_NAME = Othello_AR;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -495,11 +511,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 2FZRK6M67D;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = OthelloAR;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "ARオセロ";
+				INFOPLIST_KEY_NSCameraUsageDescription = "カメラで撮影した映像にアクセスし、映像上にオセロモデルを表示します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Start;
@@ -511,9 +527,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.softbank.i.tktaaa1124.Osero-App";
+				PRODUCT_NAME = Othello_AR;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,7 +547,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.softbank.i.tktaaa1124.Osero-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -551,7 +567,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.softbank.i.tktaaa1124.Osero-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -569,7 +585,7 @@
 				DEVELOPMENT_TEAM = 2FZRK6M67D;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.softbank.i.tktaaa1124.Osero-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -587,7 +603,7 @@
 				DEVELOPMENT_TEAM = 2FZRK6M67D;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "takata1124.Osero-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.softbank.i.tktaaa1124.Osero-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
