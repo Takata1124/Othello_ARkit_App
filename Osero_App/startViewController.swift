@@ -87,6 +87,19 @@ class startViewController: UIViewController, UIViewControllerTransitioningDelega
         return imageView
     }()
     
+//    private let instructButton: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("取扱説明ボタン", for: .normal)
+//        button.titleLabel?.textAlignment = .center
+//        button.setTitleColor(UIColor.black, for: .normal)
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+//        button.backgroundColor = .lightGray
+//        button.layer.borderColor = UIColor.black.cgColor
+//        button.layer.borderWidth = 1
+//        button.addTarget(self, action: #selector(startViewController.instrunctionSetup(_ :)), for: .touchUpInside)
+//        return button
+//    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,6 +108,7 @@ class startViewController: UIViewController, UIViewControllerTransitioningDelega
         view.addSubview(titleLabel)
         view.addSubview(titleImageView)
         view.addSubview(settingButton)
+//        view.addSubview(instructButton)
         
         titleLabel.snp.makeConstraints { make in
             
@@ -142,7 +156,22 @@ class startViewController: UIViewController, UIViewControllerTransitioningDelega
             make.bottom.equalTo(view.snp.bottom).offset(-50)
             make.centerX.equalToSuperview()
         }
+        
+//        instructButton.snp.makeConstraints { make in
+//            make.width.equalTo(150)
+//            make.height.equalTo(25)
+//            make.centerX.equalToSuperview()
+//            make.bottom.equalTo(baseStackView.snp.top).offset(-25)
+//        }
     }
+    
+//    @objc func instrunctionSetup(_ sender: UIButton){
+//
+//        let url = NSURL(string: "http://takata1124-portfoliosite.com/views")
+//        if UIApplication.shared.canOpenURL(url! as URL){
+//            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+//        }
+//    }
     
     @objc func singleWeakSetup(_ sender: UIButton){
         

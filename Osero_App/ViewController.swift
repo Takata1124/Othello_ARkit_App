@@ -31,7 +31,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 50
-        button.setTitle("Setup", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitle("ボードを置く", for: .normal)
         button.titleLabel?.tintColor = .black
         return button
     }()
@@ -53,7 +55,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 50
-        button.setTitle("othello", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitle("オセロを置く", for: .normal)
         button.titleLabel?.tintColor = .black
         return button
     }()
@@ -75,7 +79,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 50
-        button.setTitle("pass", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitle("パスする", for: .normal)
         button.titleLabel?.tintColor = .black
         return button
     }()
@@ -97,7 +103,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 50
-        button.setTitle("clear", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitle("タイトルに戻る", for: .normal)
         button.titleLabel?.tintColor = .black
         button.backgroundColor = .lightGray
         return button
@@ -136,6 +144,54 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         button.layer.cornerRadius = 10
         button.setImage(UIImage(systemName: "arrowshape.turn.up.left")?.resize(size: .init(width: 50 * 0.5, height:  50 * 0.5)), for: .normal)
         button.titleLabel?.tintColor = .black
+        return button
+    }()
+    
+    private let popupView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    private let popupTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "ゲームの始め方\n(初回確認)"
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.backgroundColor = .white
+        label.font = UIFont.systemFont(ofSize: 16)
+        return label
+    }()
+    
+    private let popupTextLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        let labelString: String = "1. 赤い矢印が出たらボード置くボタンを押します。\n2. オセロを置くボタンを押してオセロを置きます。\n(オセロを置く場所は赤いタイルで表示されます。)\n3. その後、CPUと交互にオセロを置いていきます。\n置ける場所がなくなった場合は、パスするボタンを押してください。\n4. オセロを置ける場所がなくなった場合、どちらかのオセロが全て取られてしまった場合、ゲーム終了となります。\nゲーム終了となった場合、タイトルに戻るボタンが表示されます。\n※上記内容を確認いただけましたら、下記ボタンのタップをお願いします。"
+        label.backgroundColor = .white
+        label.font = UIFont.systemFont(ofSize: 12)
+        var attributes: [NSAttributedString.Key: Any] = [:]
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 5
+        paragraphStyle.alignment = .left
+        attributes.updateValue(paragraphStyle, forKey: .paragraphStyle)
+        label.attributedText = NSAttributedString(string: labelString, attributes: attributes)
+        return label
+    }()
+    
+    private let permissionButton: UIButton = {
+       
+        let button = UIButton()
+        button.backgroundColor = .lightGray
+        button.layer.borderColor = UIColor.black.cgColor
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitle("上記内容を確認しました", for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 20
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(ViewController.signUp(_ :)), for: .touchUpInside)
         return button
     }()
     
@@ -255,6 +311,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     var cpuOthelloType: Int = 0
     //パス連続確認
     var ConsecutivelyPass: Int = 0
+    //初回起動かどうかの確認
+    let userDefaultStandard = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -292,6 +350,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         sceneView.addSubview(uiSwitch)
         sceneView.addSubview(selfLabel)
         sceneView.addSubview(clearButton)
+
         
         clearButton.isHidden = true
         
@@ -313,6 +372,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         
         othelloButton.addTarget(self, action: #selector(self.othelloSetup(_ :)), for: .touchUpInside)
         othelloButton.snp.makeConstraints { make in
+            
             
             make.size.equalTo(100)
             make.right.equalTo(boardButton.snp.left).offset(-30)
@@ -349,7 +409,45 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             make.right.equalTo(sceneView.snp.right).offset(-30)
             make.top.equalTo(uiSwitch.snp.top).offset(40)
         }
-        
+ 
+//        firstBuild確認
+        let userBuildBool = userDefaultStandard.bool(forKey: "firstBuilding")
+        print(userBuildBool)
+        if userBuildBool == false {
+            sceneView.addSubview(popupView)
+            popupView.snp.makeConstraints { make in
+                
+                make.top.equalTo(sceneView.snp.top).offset(200)
+                make.bottom.equalTo(sceneView.snp.bottom).offset(-200)
+                make.left.equalTo(sceneView.snp.left).offset(30)
+                make.right.equalTo(sceneView.snp.right).offset(-30)
+            }
+            
+            let baseStackView = UIStackView(arrangedSubviews: [popupTitleLabel, popupTextLabel, permissionButton])
+            baseStackView.axis = .vertical
+            //        baseStackView.distribution = .fillEqually
+            baseStackView.spacing = 10
+            baseStackView.translatesAutoresizingMaskIntoConstraints = false
+            
+            popupView.addSubview(baseStackView)
+            
+            popupTitleLabel.snp.makeConstraints { make in
+                make.height.equalTo(50)
+            }
+            
+            permissionButton.snp.makeConstraints { make in
+                make.height.equalTo(50)
+            }
+            
+            baseStackView.snp.makeConstraints { make in
+                
+                make.top.equalTo(popupView.snp.top).offset(10)
+                make.bottom.equalTo(popupView.snp.bottom).offset(-10)
+                make.left.equalTo(popupView.snp.left).offset(10)
+                make.right.equalTo(popupView.snp.right).offset(-10)
+            }
+        }
+
         boardNode = (self.boardscene?.rootNode.childNode(withName: "board", recursively: false))!
         boardNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         boardNode.name = "board"
@@ -381,6 +479,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         selfLabel.text = "あなたのオセロは白"
         cpuOthelloType = othelloType.black.rawValue
         //------------------------------------------
+    }
+    
+    @objc func signUp(_ sender: UIButton){
+        
+        popupView.isHidden = true
+        userDefaultStandard.set(true, forKey: "firstBuilding")
     }
     
     //オセロを置く操作

@@ -13,9 +13,8 @@ class settingViewController: UIViewController, UITableViewDelegate, UITableViewD
     let startTopView = StartTopView()
     let startTableView = StartTableView()
     
-    let tableArray: [String] = ["取扱説明/プライバシーポリシー"]
-    let sections: Array = ["設定"]
-    //lazyでviewサイズ取得後に実施
+    let tableArray: [String] = ["取扱説明","プライバシーポリシー","website"]
+//    let sections: Array = ["設定"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +22,6 @@ class settingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let baseStackView = UIStackView(arrangedSubviews: [startTopView, startTableView])
         baseStackView.axis = .vertical
         baseStackView.translatesAutoresizingMaskIntoConstraints = false
-        //        baseStackView.distribution = .fillEqually
         
         self.view.addSubview(baseStackView)
         
@@ -49,10 +47,10 @@ class settingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.dismiss(animated: true, completion: nil)
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
-    }
+//
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return sections[section]
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -74,9 +72,18 @@ class settingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let url = NSURL(string: "http://takata1124-portfoliosite.com/views")
-        if UIApplication.shared.canOpenURL(url! as URL){
-            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+        if indexPath.row == 2 {
+            
+            let url = NSURL(string: "http://takata1124-portfoliosite.com/base")
+            if UIApplication.shared.canOpenURL(url! as URL){
+                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+            }
+        } else {
+            
+            let url = NSURL(string: "http://takata1124-portfoliosite.com/views")
+            if UIApplication.shared.canOpenURL(url! as URL){
+                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+            }
         }
     }
 }
