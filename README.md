@@ -33,13 +33,9 @@ activate pyxel
 
 # Installation
  
-Install this application 
+Install this application tapping under an icon-image.
 
 <a href="https://apps.apple.com/jp/app/ar%E3%82%AA%E3%82%BB%E3%83%AD/id1609306273"><img src="https://user-images.githubusercontent.com/83679529/155931841-a92308bb-5a02-44a4-9064-1301c0418400.svg"></a>
- 
-```bash
-https://apps.apple.com/jp/app/ar%E3%82%AA%E3%82%BB%E3%83%AD/id1609306273
-```
 
 # Test
 
