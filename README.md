@@ -60,7 +60,7 @@ How to use user information through this applicaiton, that is described on my we
 
 # Contact
 If you have any question about this application, please message from my website's contact-form.
-Before messaging any question to me, please prepare for your mail-address used for replying to my answer.
+<br>Before messaging any question to me, please prepare for your mail-address used for replying to my answer.
 * Contact : http://takata1124-portfoliosite.com/views
 
 # Author
