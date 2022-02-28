@@ -40,7 +40,7 @@ This application was tested under environment practically.
 
 * Swift
 
-# Technique(Framework & Library)
+# Technique (Framework & Library)
 
 * ARkit
 * SnapKit
