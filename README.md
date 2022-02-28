@@ -8,8 +8,6 @@ How this application move is described under pictures.
 
 <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px">
 
-This animation is a "Cat playing on trampoline"!
-
 # Features
  
 Physics_Sim_Py used [pyxel](https://github.com/kitao/pyxel) only.
