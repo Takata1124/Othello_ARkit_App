@@ -4,15 +4,12 @@
  
 # DEMO
  
-You can learn how to making cute physics simulations (looks retro game).
+How this application move is described under pictures.
 
 <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="100px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="100px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="100px">
 
-
- 
 This animation is a "Cat playing on trampoline"!
-You can get basic skills for making physics simulations.
- 
+
 # Features
  
 Physics_Sim_Py used [pyxel](https://github.com/kitao/pyxel) only.
@@ -24,7 +21,7 @@ import pyxel
 You can feel free to enjoy making pixel art style physics simulations.
  
 # Requirement
- 
+
 * Python 3.6.5
 * pyxel 1.0.2
  
