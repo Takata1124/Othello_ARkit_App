@@ -16,8 +16,8 @@ This application is maked with ARkit.
  
 # Usage
  
+
 Please create python code named "demo.py".
-And copy &amp; paste [Day4 tutorial code](https://cpp-learning.com/pyxel_physical_sim4/).
  
 Run "demo.py"
  
