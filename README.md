@@ -1,6 +1,6 @@
 # Othello_ARkit_App
 
-"Othello_ARkit_App" is a IOS-Application sail in AppStore for free.
+"Othello_ARkit_App" is a IOS-Application, that is sold in AppStore for free.
  
 # DEMO
  
@@ -26,7 +26,7 @@ You can feel free to enjoy making pixel art style physics simulations.
 * Python 3.6.5
 * pyxel 1.0.2
  
-Environments under [Anaconda for Windows](https://www.anaconda.com/distribution/) is tested.
+<!-- Environments under [Anaconda for Windows](https://www.anaconda.com/distribution/) is tested. -->
  
 ```bash
 conda create -n pyxel pip python=3.6 Anaconda
