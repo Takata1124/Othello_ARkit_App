@@ -31,6 +31,10 @@ You can feel free to enjoy making pixel art style physics simulations.
 conda create -n pyxel pip python=3.6 Anaconda
 activate pyxel
 ```
+
+# Test
+
+Install Pyxel with pip command.
  
 # Installation
  
@@ -50,21 +54,22 @@ Run "demo.py"
 ```bash
 python demo.py
 ```
- 
+
 # Note
  
 I don't test environments under Linux and Mac.
  
 # Author
  
-* Hayabusa
-* R&D Center
+* Takata Kyosuke
+* Websute :
 * Twitter : https://twitter.com/Cpp_Learning
  
 # License
  
 "Physics_Sim_Py" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+
+# Coment
  
 Enjoy making cute physics simulations!
- 
 Thank you!
