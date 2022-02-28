@@ -51,27 +51,20 @@ This application was tested under environment practically.
 * ARkit
 * SnapKit
 
-# Note
- 
-I don't test environments under Linux and Mac.
-
 # Privacy Policy
  
-How to use any user information through this applicaiton, that is described on my website.
+How to use user information through this applicaiton, that is described on my website.
 <br>Basically, this application dosen't take any user information.
 <br>If you would like to know more information about this privacy-policy through under link.
 * Privacy-Policy : http://takata1124-portfoliosite.com/views
 
 # Contact
- 
-I don't test environments under Linux and Mac.
+If you have any question about this application, please message from my website's contact-form.
+Before messaging any question to me, please prepare for your mail-address used for replying to my answer.
+* Contact : http://takata1124-portfoliosite.com/views
 
 # Author
  
 * Name : Takata Kyosuke
 * Websute : http://takata1124-portfoliosite.com/base
 * Twitter : https://twitter.com/kyosuke_takata
-
-# Coment
- 
-Enjoy playing this application! Thank you for your reading!
