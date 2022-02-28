@@ -63,8 +63,11 @@ I don't test environments under Linux and Mac.
  
 # Privacy Policy
  
-How to use user information through this applicaiton, that is described on my website.
-<br>Basically, this application dosen't take user information.
+How to use any user information through this applicaiton, that is described on my website.
+<br>Basically, this application dosen't take any user information.
+<br>If you would like to know more information about this privacy-policy through under link.
+
+
 
 # Coment
  
