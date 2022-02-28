@@ -1,12 +1,12 @@
 # Othello_ARkit_App
 
-"Physics_Sim_Py" is a tutorial of physics simulations with Python.
+"Othello_ARkit_App" is a IOS-Application sail in AppStore for free.
  
 # DEMO
  
 You can learn how to making cute physics simulations (looks retro game).
  
-![](https://cpp-learning.com/wp-content/uploads/2019/05/pyxel-190505-161951.gif)
+<!-- ![](https://cpp-learning.com/wp-content/uploads/2019/05/pyxel-190505-161951.gif) -->
  
 This animation is a "Cat playing on trampoline"!
 You can get basic skills for making physics simulations.
