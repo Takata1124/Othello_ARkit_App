@@ -61,9 +61,10 @@ I don't test environments under Linux and Mac.
 * Websute : http://takata1124-portfoliosite.com/base
 * Twitter : https://twitter.com/kyosuke_takata
  
-# License
+# Privacy Policy
  
-"Physics_Sim_Py" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+How to use user information through this applicaiton, that is described on my website.
+<br>Basically, this application dosen't take user information.
 
 # Coment
  
