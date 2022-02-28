@@ -6,7 +6,7 @@
  
 How this application move is described under pictures briefly.
 
-<img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://github.com/Takata1124/Othello_ARkit_App/issues/3#issue-1153833599" width="150px">
+<img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://user-images.githubusercontent.com/83679529/155955350-9aecf53f-fdc1-4e7b-b6e4-5a7bde41c2ed.jpg" width="150px">
 
 # Features
  
