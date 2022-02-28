@@ -5,8 +5,9 @@
 # DEMO
  
 You can learn how to making cute physics simulations (looks retro game).
- 
-![IMG_6229 (1)](https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG)
+
+<img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" alt="altテキスト" width="指定したい幅(例: 400px)">
+<!-- ![IMG_6229 (1)]() -->
  
 This animation is a "Cat playing on trampoline"!
 You can get basic skills for making physics simulations.
