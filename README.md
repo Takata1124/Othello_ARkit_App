@@ -1,6 +1,6 @@
 # Othello_ARkit_App
 
-"Othello_ARkit_App" is a IOS-Application, that is sold on AppStore for free.
+"Othello_ARkit_App" is a iOS-Application, that is sold on AppStore for free.
  
 # DEMO
  
@@ -41,6 +41,10 @@ This application was tested under mobiles practically.
 
 * Iphone Xs
 * Iphone SE2
+
+This application was tested under environment practically.
+
+* iOS 15.3.1
 
 # Language
 
