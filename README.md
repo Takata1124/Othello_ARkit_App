@@ -15,15 +15,9 @@ This application is maked with ARkit.
 <br>I'm sure that you have never played an othello-game like this game using mobile so far.
  
 # Usage
- 
 
-Please create python code named "demo.py".
- 
-Run "demo.py"
- 
-```bash
-python demo.py
-```
+Read my explaination which indicates how to play this application.
+* explaination : http://takata1124-portfoliosite.com/views
 
 # Installation
  
