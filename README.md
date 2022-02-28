@@ -6,7 +6,7 @@
  
 You can learn how to making cute physics simulations (looks retro game).
 
-<img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" alt="altテキスト" width=300px>
+<img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="300px">
 <!-- ![IMG_6229 (1)]() -->
  
 This animation is a "Cat playing on trampoline"!
