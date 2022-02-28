@@ -12,6 +12,7 @@ How this application move is described under pictures briefly.
  
 This application is maked with ARkit.
 <br>Therefore, you can play an Othello-Game like practically.
+<br>Maybe, you have never played an Othello-Game using mobile so far.
  
 # Requirement
 
