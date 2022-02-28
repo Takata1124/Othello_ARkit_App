@@ -50,7 +50,10 @@ This application was tested under mobiles practically.
 
 * Swift
 
-# Technique
+# Technique(Framework & Library)
+
+* ARkit
+* SnapKit
  
 # Usage
  
