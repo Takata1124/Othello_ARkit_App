@@ -14,13 +14,15 @@ This application is maked with ARkit.
 <br>Therefore, you can play an Othello-Game like practically.
 <br>Maybe, you have never played an Othello-Game using mobile so far.
  
-# Requirement
-
-* Python 3.6.5
+# Usage
+ 
+Please create python code named "demo.py".
+And copy &amp; paste [Day4 tutorial code](https://cpp-learning.com/pyxel_physical_sim4/).
+ 
+Run "demo.py"
  
 ```bash
-conda create -n pyxel pip python=3.6 Anaconda
-activate pyxel
+python demo.py
 ```
 
 # Installation
@@ -48,17 +50,6 @@ This application was tested under environment practically.
 
 * ARkit
 * SnapKit
- 
-# Usage
- 
-Please create python code named "demo.py".
-And copy &amp; paste [Day4 tutorial code](https://cpp-learning.com/pyxel_physical_sim4/).
- 
-Run "demo.py"
- 
-```bash
-python demo.py
-```
 
 # Note
  
