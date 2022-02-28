@@ -4,25 +4,17 @@
  
 # DEMO
  
-How this application move is described under pictures.
+How this application move is described under pictures briefly.
 
 <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px">
 
 # Features
  
-Physics_Sim_Py used [pyxel](https://github.com/kitao/pyxel) only.
- 
-```python
-import pyxel
-```
-[Pyxel](https://github.com/kitao/pyxel) is a retro game engine for Python.
-You can feel free to enjoy making pixel art style physics simulations.
+This application is maked with ARkit. Therefore, you can play an Othello-Game like practically.
  
 # Requirement
 
 * Python 3.6.5
- 
-<!-- Environments under [Anaconda for Windows](https://www.anaconda.com/distribution/) is tested. -->
  
 ```bash
 conda create -n pyxel pip python=3.6 Anaconda
