@@ -10,7 +10,8 @@ How this application move is described under pictures briefly.
 
 # Features
  
-This application is maked with ARkit. Therefore, you can play an Othello-Game like practically.
+This application is maked with ARkit. 
+Therefore, you can play an Othello-Game like practically.
  
 # Requirement
 
