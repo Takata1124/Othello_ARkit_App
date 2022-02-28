@@ -31,13 +31,6 @@ conda create -n pyxel pip python=3.6 Anaconda
 activate pyxel
 ```
 
-# Test
-
-This application was tested under mobiles practically.
-
-* Iphone Xs
-* Iphone SE2
-
 # Installation
  
 Install Pyxel with pip command.
@@ -45,6 +38,19 @@ Install Pyxel with pip command.
 ```bash
 pip install pyxel
 ```
+
+# Test
+
+This application was tested under mobiles practically.
+
+* Iphone Xs
+* Iphone SE2
+
+# Language
+
+* Swift
+
+# Technique
  
 # Usage
  
@@ -73,6 +79,4 @@ I don't test environments under Linux and Mac.
 
 # Coment
  
-Enjoy playing this application.
-
-Thank you for your reading!
+Enjoy playing this application! Thank you for your reading!
