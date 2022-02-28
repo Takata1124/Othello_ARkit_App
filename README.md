@@ -29,7 +29,7 @@ python demo.py
  
 Install this application tapping on under icon-image or search "ARオセロ" as a keyword on AppStore.
 
-<a href="https://apps.apple.com/jp/app/ar%E3%82%AA%E3%82%BB%E3%83%AD/id1609306273" target="_blank"><img src="https://user-images.githubusercontent.com/83679529/155931841-a92308bb-5a02-44a4-9064-1301c0418400.svg"></a>
+<a href="https://apps.apple.com/jp/app/ar%E3%82%AA%E3%82%BB%E3%83%AD/id1609306273" target="_blank><img src="https://user-images.githubusercontent.com/83679529/155931841-a92308bb-5a02-44a4-9064-1301c0418400.svg"></a>
 
 # Test Pracitcally
 
