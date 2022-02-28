@@ -48,7 +48,7 @@ This application was tested under environment practically.
 # Privacy Policy
  
 How to use user information through this applicaiton, that is described on my website.
-<br>Basically, this application dosen't take any user information.
+<br>Basically, this application dosen't take any information.
 <br>If you would like to know more information about this privacy-policy through under link.
 * Privacy-Policy : http://takata1124-portfoliosite.com/views
 
