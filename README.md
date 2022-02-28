@@ -23,7 +23,6 @@ You can feel free to enjoy making pixel art style physics simulations.
 # Requirement
 
 * Python 3.6.5
-* pyxel 1.0.2
  
 <!-- Environments under [Anaconda for Windows](https://www.anaconda.com/distribution/) is tested. -->
  
@@ -34,7 +33,7 @@ activate pyxel
 
 # Test
 
-This application was tested under environments practically.
+This application was tested under mobiles practically.
 
 * Iphone Xs
 * Iphone SE2
@@ -74,5 +73,5 @@ I don't test environments under Linux and Mac.
 
 # Coment
  
-Enjoy making cute physics simulations!
-Thank you!
+Enjoy playing this application.
+Thank you for your reading!
