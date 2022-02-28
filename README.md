@@ -61,4 +61,4 @@ If you have any question about this application, please message from my website'
  
 * Name : Takata Kyosuke
 * Websute : http://takata1124-portfoliosite.com/base
-* Twitter : https://twitter.com/kyosuke_takata
+* Twitter : https://twitter.com/kyo_suke_1124
