@@ -62,6 +62,10 @@ How to use any user information through this applicaiton, that is described on m
 <br>If you would like to know more information about this privacy-policy through under link.
 * Privacy-Policy : http://takata1124-portfoliosite.com/views
 
+# Contact
+ 
+I don't test environments under Linux and Mac.
+
 # Author
  
 * Name : Takata Kyosuke
