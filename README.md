@@ -36,7 +36,7 @@ activate pyxel
 Install Pyxel with pip command.
  
 ```bash
-pip install pyxel
+https://apps.apple.com/jp/app/ar%E3%82%AA%E3%82%BB%E3%83%AD/id1609306273
 ```
 
 # Test
