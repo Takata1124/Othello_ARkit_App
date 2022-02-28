@@ -64,8 +64,8 @@ I don't test environments under Linux and Mac.
 # Author
  
 * Name : Takata Kyosuke
-* Websute : 
-* Twitter : https://twitter.com/Cpp_Learning
+* Websute : http://takata1124-portfoliosite.com/base
+* Twitter : https://twitter.com/kyosuke_takata
  
 # License
  
