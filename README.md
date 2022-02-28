@@ -33,7 +33,9 @@ activate pyxel
 
 # Installation
  
-Install Pyxel with pip command.
+Install this application 
+
+<a href="https://apps.apple.com/jp/app/firefox-%E3%82%A6%E3%82%A7%E3%83%96%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%BC/id989804926?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2015-11-12&kind=iossoftware&bubble=ios_apps) no-repeat;width:218px; height:65px; margin:16px; background-size:contain;">​</a>
  
 ```bash
 https://apps.apple.com/jp/app/ar%E3%82%AA%E3%82%BB%E3%83%AD/id1609306273
