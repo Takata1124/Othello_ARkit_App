@@ -54,20 +54,18 @@ This application was tested under environment practically.
 # Note
  
 I don't test environments under Linux and Mac.
- 
-# Author
- 
-* Name : Takata Kyosuke
-* Websute : http://takata1124-portfoliosite.com/base
-* Twitter : https://twitter.com/kyosuke_takata
- 
+
 # Privacy Policy
  
 How to use any user information through this applicaiton, that is described on my website.
 <br>Basically, this application dosen't take any user information.
 <br>If you would like to know more information about this privacy-policy through under link.
 
-
+# Author
+ 
+* Name : Takata Kyosuke
+* Websute : http://takata1124-portfoliosite.com/base
+* Twitter : https://twitter.com/kyosuke_takata
 
 # Coment
  
