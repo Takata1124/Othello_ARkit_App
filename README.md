@@ -11,8 +11,8 @@ How this application move is described under pictures briefly.
 # Features
  
 This application is maked with ARkit.
-<br>Therefore, you can play an Othello-Game like practically.
-<br>Maybe, you have never played an Othello-Game using mobile so far.
+<br>Therefore, you can making an othello board in front of you and play a game practically.
+<br>I'm sure that you have never played an othello-game using mobile so far.
  
 # Usage
  
