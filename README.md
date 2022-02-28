@@ -6,7 +6,7 @@
  
 How this application move is described under pictures.
 
-<img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px">   <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px">   <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px">
+<img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px"> <img src="https://user-images.githubusercontent.com/83679529/155926551-11eac50b-cbd8-425c-ae8d-b66c200c8eeb.PNG" width="150px">
 
 This animation is a "Cat playing on trampoline"!
 
@@ -34,8 +34,11 @@ activate pyxel
 
 # Test
 
-Install Pyxel with pip command.
- 
+This application was tested under environments practically.
+
+* Iphone Xs
+* Iphone SE2
+
 # Installation
  
 Install Pyxel with pip command.
@@ -61,8 +64,8 @@ I don't test environments under Linux and Mac.
  
 # Author
  
-* Takata Kyosuke
-* Websute :
+* Name : Takata Kyosuke
+* Websute : 
 * Twitter : https://twitter.com/Cpp_Learning
  
 # License
