@@ -16,7 +16,7 @@ This application is maked with ARkit.
 # Usage
 
 Read my explaination which indicates how to play this application.
-* explaination : http://takata1124-portfoliosite.com/views
+* explaination : https://takata1124-portfoliosite.com/views
 
 # Installation
  
@@ -49,15 +49,15 @@ This application was tested under environment practically.
 How to use user information through this applicaiton, that is described on my website.
 <br>Basically, this application dosen't take any information.
 <br>If you would like to know more information about this privacy-policy through under link.
-* Privacy-Policy : http://takata1124-portfoliosite.com/views
+* Privacy-Policy : https://takata1124-portfoliosite.com/views
 
 # Contact
 If you have any question about this application, please message from my website's contact-form.
 <br>Before messaging any question to me, please prepare for your mail-address used for replying to my answer.
-* Contact : http://takata1124-portfoliosite.com/contact
+* Contact : https://takata1124-portfoliosite.com/contact
 
 # Author
  
 * Name : Takata Kyosuke
-* Websute : http://takata1124-portfoliosite.com/base
+* Websute : https://takata1124-portfoliosite.com/base
 * Twitter : https://twitter.com/kyo_suke_1124
